@@ -23,6 +23,21 @@ import { AccountInfo } from './account-info';
             <span class="badge silver">Silver</span>
           }
         </p>
+
+        <p>
+          @switch (account.membershipStatus) {
+          @case ('gold'){
+            <span class="badge gold">Gold</span>
+
+          } @case('platinum'){
+            <span class="badge platinum">Platinum</span>
+          
+          } @case('silver'){
+  <span class="badge silver">Silver</span>
+          }
+        }
+        </p>
+
       </section>
     </article>
   `,
