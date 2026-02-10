@@ -35,7 +35,9 @@ import { Car } from '../car';
   styles: ``,
 })
 export class ListingComponent {
-  @Input() car!: Car;
+  @Input({
+    required: true // this means that this thinks needs to be passed surely, otherwise angular will provide error.
+  }) car!: Car;
   @Output() carSaved = new EventEmitter<Car>();
 
   saveHandler() {
