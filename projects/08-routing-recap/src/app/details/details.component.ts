@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,16 +7,21 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <section>
-      <p>Title</p>
       <ul>
-        <li>Price</li>
-        <li>Description</li>
+        <li>Title : {{productList[value].title}}</li>
+        <li>Price : {{productList[value].price}}</li>
+        <li>Description : {{productList[value].description}}</li>
       </ul>
     </section>
   `,
   styles: ``,
 })
 export class DetailsComponent {
+  value: number = -1;
+
+  @Input() set id(value: number) { // this input is special, it is setter for the value passed in the route of any type. 
+    this.value = value
+  }
   productList = [
     {
       title: 'Product 1',
