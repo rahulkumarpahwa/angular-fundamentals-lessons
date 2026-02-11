@@ -1,16 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../data';
 
 @Component({
   selector: 'app-user-info',
   standalone: true,
   template: `
-    <p>{{ user.id }} {{ user.email }}</p>
+  @for(user of userData; track user.id){
+<div>
+    <p>ID: {{ user.id }} Email : {{ user.email }}</p>
     <!-- add more properties to customize -->
+    <p>Name : {{user.name}} Username : {{user.username}}</p>
+    <p>Address : {{user.address.street}}, {{user.address.suite}}, {{user.address.city}} {{user.address.zipcode}}.</p>
+    <p>Geo : {{user.address.geo.lat}}, {{user.address.geo.lng}}. </p>
+    <p>Phone : {{user.phone}}</p>
+    <p>Website: {{user.website}}</p>
+    <p>Phone : {{user.phone}}</p>
+    <p>Company : {{user.company.name}}, {{user.company.catchPhrase}}, {{user.company.bs}}</p>
+  </div>
+  <hr/>
+  } 
+  
   `,
   styles: ``,
 })
 export class UserInfoComponent {
+  @Input() userData: User[] = [];
   // Test user data
   user: User = {
     id: -1,
