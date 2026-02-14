@@ -8,10 +8,12 @@ import { Post } from '../data';
   imports: [CommonModule],
   template: `
     @for(post of postData; track post.id) {
-    <article class="post">
+      @if (post.id < 5) {
+      <article class="post">
       <p class="title">{{ post.title }}</p>
       <p class="body">{{ post.body }}</p>
-    </article>
+      </article>
+      }
     }
   `,
   styles: `
