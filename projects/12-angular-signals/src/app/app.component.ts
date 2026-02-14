@@ -65,12 +65,23 @@ export class AppComponent {
   })
 
 
+  // using the 'update' method:
+  // handleAddTaskForm() {
+  //   this.todos.update(tds => [...tds, {
+  //     id: this.addTaskForm.value.id || 0,
+  //     title: this.addTaskForm.value.title || "",
+  //     completed: false
+  //   }]);
+  //   this.addTaskForm.reset({ id: this.addTaskForm.value.id! + 1, title: "" });
+  // }
+
+
+  // using the 'set' method:
   handleAddTaskForm() {
-    this.todos.update(tds => [...tds, {
+    this.todos.set([...this.todos(), {
       id: this.addTaskForm.value.id || 0,
-      title: this.addTaskForm.value.title || "",
-      completed: false
-    }]);
+      title: this.addTaskForm.value.title || "", completed: false
+    }])
     this.addTaskForm.reset({ id: this.addTaskForm.value.id! + 1, title: "" });
   }
 }
